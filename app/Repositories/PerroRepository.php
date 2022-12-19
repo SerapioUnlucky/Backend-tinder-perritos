@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Interaccion;
 use App\Models\Perro;
+use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
@@ -18,16 +19,21 @@ class PerroRepository
 
     public function createPerro($request)
     {
-        $perros = Perro::create([
-            "perr_nombre" => $request->perr_nombre,
-            "perr_imagen" => $request->perr_imagen,
-            "descripcion" => $request->descripcion
-        ]);
-        return response()->json(["perros"=>$perros], Response::HTTP_OK);
+        try {
+            $perros = Perro::create([
+                "perr_nombre" => $request->perr_nombre,
+                "perr_imagen" => $request->perr_imagen,
+                "descripcion" => $request->descripcion
+            ]);
+            return response()->json(["perros"=>$perros], Response::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
+    }
     }
 
     public function putPerro($request)
     {
+        try{
         $perros = Perro::findorFail($request->id);
         
         isset($request->nombre) && $perros->perr_nombre = $request->nombre;
@@ -49,14 +55,22 @@ class PerroRepository
          ]);
 
          return response()->json(["perros"=>$perros], Response::HTTP_OK);
+        }catch (Exception $e) {
+            return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
+        }
     }
 
     public function deletePerro($request)
     {
-
+    try {
         $perros = Perro::find($request->id);
         $perros->delete();
         return response()->json(["perros" => $perros], Response::HTTP_OK);
+
+    }catch (Exception $e) {
+        return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
+
+    }
 
     }
     

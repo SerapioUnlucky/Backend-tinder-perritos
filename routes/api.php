@@ -13,7 +13,7 @@ Route::prefix('/perros')->group(function () use ($router) {
 
     $router->post('/AgregarPerro', [PerroController::class, 'createPerro']);
     $router->get('/ObtenerPerros', [PerroController::class, 'getPerros']);
-    $router->put('/ActualizarPerro', [PerroController::class, 'putPerro']);
-    $router->delete('/EliminarPerro', [PerroController::class, 'deletePerro']);
+    $router->put('/ActualizarPerro/{id}', [PerroController::class, 'putPerro']);
+    $router->delete('/EliminarPerro/{id}', [PerroController::class, 'deletePerro']);
 
 });
