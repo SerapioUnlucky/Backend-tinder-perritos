@@ -38,8 +38,6 @@ class InteraccionRequest extends FormRequest
     {
         return [
             'required' => 'El campo :attribute es requerido',
-            'integer' => 'El campo :attribute debe ser entero',
-            'different'=>'No pueden tener campos iguales',
             'exists'=>'No existe el campo :attribute',
             'in'=>'Solo se admite Aceptado o Rechazado'
         ];
