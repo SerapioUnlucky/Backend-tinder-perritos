@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\V1;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Response;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use SebastianBergmann\Type\TrueType;
 
 class InteraccionRequest extends FormRequest
@@ -25,8 +28,8 @@ class InteraccionRequest extends FormRequest
     public function rules()
     {
         return [
-            "perr_interesado" => "required|integer|different:perr_interesado|exists:perros,id",
-            "perr_candidado" => "required|integer|different:perr_candidato|exists:perros,id",
+            "perr_interesado" => "required|exists:perros,id",
+            "perr_candidato" => "required|exists:perros,id",
             "preferencia" => "in:Aceptado,Rechazado"
             //
         ];
@@ -40,5 +43,12 @@ class InteraccionRequest extends FormRequest
             'exists'=>'No existe el campo :attribute',
             'in'=>'Solo se admite Aceptado o Rechazado'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json($validator->errors()->all(), Response::HTTP_BAD_REQUEST)
+        );
     }
 }

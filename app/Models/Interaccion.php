@@ -16,7 +16,7 @@ class Interaccion extends Model
 
     public $fillable = [
         "perr_interesado",
-        "perr_candidado",
+        "perr_candidato",
         "preferencia"
     ];
 

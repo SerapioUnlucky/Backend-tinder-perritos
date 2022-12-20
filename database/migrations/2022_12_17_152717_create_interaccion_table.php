@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger("perr_candidato");
             $table->foreign('perr_interesado')->references('id')->on('perros');
             $table->foreign('perr_candidato')->references('id')->on('perros');
-            $table->string("preferencia",255);
+            $table->string("preferencia", 255);
         });
     }
 
