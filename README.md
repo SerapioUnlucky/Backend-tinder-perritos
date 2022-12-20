@@ -54,7 +54,6 @@ Ruta: `/AgregarPerro`
 	"perr_imagen":"*IMAGEN DEL PERRO*",
 	"descripcion":"*DESCRIPCION DEL PERRO*"
 }
-
 ```
 
 METODO: GET
@@ -71,7 +70,6 @@ Ruta: `/ActualizarPerro/{id}`
 	"perr_imagen":"*IMAGEN DEL PERRO*",
 	"descripcion":"*DESCRIPCION DEL PERRO*"
 }
-
 ```
 
 METODO: DELETE
@@ -90,7 +88,6 @@ Ruta: `/AgregarInteraccion`
 	"perr_candidato":"*ID PERRO*",
 	"preferencia":"*Aceptado o Rechazado*"
 }
-
 ```
 
 METODO: GET
