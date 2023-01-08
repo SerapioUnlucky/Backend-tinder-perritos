@@ -26,7 +26,7 @@ class PerroRequest extends FormRequest
         return [
 
             "perr_nombre" => "required|string",
-            "perr_imagen" => "required|string",
+            "perr_imagen" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "descripcion" => "required|string"
             
         ];

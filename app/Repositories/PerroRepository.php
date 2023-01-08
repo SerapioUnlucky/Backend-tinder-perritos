@@ -20,12 +20,16 @@ class PerroRepository
     public function createPerro($request)
     {
         try {
-            $perros = Perro::create([
-                "perr_nombre" => $request->perr_nombre,
-                "perr_imagen" => $request->perr_imagen,
-                "descripcion" => $request->descripcion
-            ]);
-            return response()->json(["perros"=>$perros], Response::HTTP_OK);
+
+            $imageName = time() . '.' . $request->perr_imagen->extension();
+            $request->perr_imagen->storeAs('public/images', $imageName);
+
+            $postData = ['perr_nombre' => $request->perr_nombre,
+             'perr_imagen' => $imageName ,'descripcion' => $request->descripcion,];
+
+            Perro::create($postData);
+            return redirect('perros');
+            
         } catch (Exception $e) {
             return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
     }

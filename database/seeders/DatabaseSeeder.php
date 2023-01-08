@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        
         Perro::factory(4)->create();
         // \App\Models\User::factory(10)->create();
 
