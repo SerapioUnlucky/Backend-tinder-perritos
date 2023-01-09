@@ -16,6 +16,18 @@ class InteraccionRepository
         return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);
     }
 
+    public function getCandidato()
+    {
+        $interaccion = Interaccion::where("preferencia", '=', "Aceptado")->get();
+        return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);
+    }
+
+    public function getRechazado()
+    {
+        $interaccion = Interaccion::where("preferencia", '=', "Rechazado")->get();
+        return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);
+    }
+
     public function getInteraccion($request)
     {
         $interaccion= interaccion::where('id', $request->id)->get();

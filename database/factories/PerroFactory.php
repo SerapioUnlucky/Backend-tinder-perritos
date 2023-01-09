@@ -22,7 +22,7 @@ class PerroFactory extends Factory
 
         return [
             'perr_nombre' => $this->faker->name,
-            'perr_imagen' => $this->faker->imageUrl(640, 480,'dogs','png'),
+            'perr_imagen' => $this->faker->imageUrl(640, 480, 'dogs', 'png'),
             'descripcion' => $this->faker->sentence
             //
         ];
