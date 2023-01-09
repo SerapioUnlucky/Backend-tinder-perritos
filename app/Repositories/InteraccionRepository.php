@@ -30,6 +30,19 @@ class InteraccionRepository
         return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);
     }
 
+    public function putPreferencia($request)
+    {
+        $interaccion = Interaccion::findorFail($request->id);
+
+        isset($request->prefer) && $interaccion->preferencia = $request->prefer;
+        $interaccion = Interaccion::where('id', $request->id)
+        ->update([
+            "preferencia" => $request->preferencia,
+         ]);
+
+         return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);
+    }
+
     public function getCandidato()
     {
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\V1\InteraccionRequest;
+use App\Http\Requests\V1\PreferenciaRequest;
 use App\Repositories\InteraccionRepository;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,11 @@ class InteraccionController extends Controller
     public function __construct(InteraccionRepository $repo)
     {
         $this->repo = $repo;
+    }
+
+    public function putPreferencia(PreferenciaRequest $request)
+    {
+        return $this->repo->putPreferencia($request);
     }
 
     public function getInteracciones()

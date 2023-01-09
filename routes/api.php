@@ -22,6 +22,7 @@ Route::prefix('/perros')->group(function () use ($router) {
 Route::prefix('/interaccion')->group(function () use ($router) {
 
     $router->post('/AgregarInteraccion', [InteraccionController::class, 'createInteraccion']);
+    $router->put('/CambiarPreferencia/{id}', [InteraccionController::class, 'putPreferencia']);
     $router->get('/ObtenerPerroAceptados', [InteraccionController::class, 'getAceptados']);
     $router->get('/ObtenerCandidato', [InteraccionController::class, 'getCandidato']);
     $router->get('/ObtenerPerroRechazados', [InteraccionController::class, 'getRechazado']);
