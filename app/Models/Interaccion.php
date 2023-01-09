@@ -22,7 +22,12 @@ class Interaccion extends Model
 
     public function perro(){
 
-        return $this->belongsTo(Perro::class, "perr_interesado","perr_candidado");
+        return $this->belongsTo(Perro::class,"perr_candidato");
+    
+    }
+    public function perrointeresado(){
+
+        return $this->belongsTo(Perro::class,"perr_interesado");
     
     }
     

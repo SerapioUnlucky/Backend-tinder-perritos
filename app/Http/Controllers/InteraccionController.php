@@ -30,6 +30,11 @@ class InteraccionController extends Controller
         return $this->repo->createInteraccion($request);
     }
 
+    public function getAceptados()
+    {
+        return $this->repo->getAceptados();
+    }
+
     public function getCandidato()
     {
         return $this->repo->getCandidato();
