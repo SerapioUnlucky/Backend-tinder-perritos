@@ -32,6 +32,9 @@ class InteraccionRepository
 
     public function getCandidato()
     {
+
+        $interaccion= Perro::inRandomOrder()->limit(5)->first();
+
         //$interaccion = Perro::inRandomOrder()->first();
         //$interaccion->id;
         /*$estado = $this -> ValidarCandidato($interaccion);
@@ -45,9 +48,9 @@ class InteraccionRepository
         $perro = Perro::all()->random(1);
         $interaccion = Interaccion::with(['perro' => function ($q) use ($perro) {
             $q->where('id','=',5);
-        }])->get();
+        }])->get();*/
 
-        return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);*/
+        return response()->json(["interaccion"=>$interaccion], Response::HTTP_OK);
 
 
     }
